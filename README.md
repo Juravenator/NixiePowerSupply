@@ -17,3 +17,15 @@ See the complete blogs entry at  www.surfncircuits.com
   * [Designing a Small Footprint, Low Profile 5v to 170v Nixie Tube Power Supply (Part 1)](https://wp.me/p85ddV-A8 )
   * [Optimizing the design of the 5v to 170v Nixie Tube Power Supply (Part 2)](https://wp.me/p85ddV-B1 )
   * [KiCad Power Tools Help Shrink The Nixie Tube Power Supply (part 3)](https://wp.me/p85ddV-Ck)  
+
+## Generating BOM/POC files for JLCPCB
+
+You'll need both KiCAD4 and KiCAD5. Use `kicad4.Dockerfile` to get yourself a working KiCAD4 installation.
+
+The information below is in addition to the documentation found at
+https://support.jlcpcb.com/article/84-how-to-generate-the-bom-and-centroid-file-from-kicad
+
+Generate the BOM in KiCAD4 using the Schematic Layout Editor > Tools > Generate Bill of Materials.
+
+Generate the POC in KiCAD5 using PCB Layout Editor > File > Fabrication Outputs > Footprint Position (.pos) File.
+Adjust the column names using `sed -i 's|Ref,Val,Package,PosX,PosY,Rot,Side|Designator,Val,Package,Mid X,Mid Y,Rotation,Layer|' NixieSupply5vto160vDCMBoost-top-pos.csv`
