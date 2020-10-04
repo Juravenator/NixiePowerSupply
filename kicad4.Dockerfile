@@ -1,5 +1,5 @@
 # requires running 'xhost +', reset after use with 'xhost -'
-# docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/developer/.Xauthority --net=host --mount type=bind,source=`pwd`/git,target=/git productize/kicad:4.0.7-18.04
+# docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/developer/.Xauthority --net=host --mount type=bind,source=`pwd`/git,target=/git registry.gitlab.com/juravenator/nixiepowersupply/kicad4:master-latest
 
 FROM productize/kicad:4.0.7-18.04
 

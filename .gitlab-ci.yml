@@ -1,0 +1,17 @@
+workflow:
+  rules:
+  - if: $CI_COMMIT_TAG
+  - if: $CI_COMMIT_BRANCH
+
+stages:
+- 📦 publish
+
+KiCAD4 image:
+  image: 
+    name: gcr.io/kaniko-project/executor:debug-v1.2.0
+    entrypoint: [""]
+  stage: 📦 publish
+  retry: 2
+  script:
+  - echo "{\"auths\":{\"$CI_REGISTRY\":{\"username\":\"$CI_REGISTRY_USER\",\"password\":\"$CI_REGISTRY_PASSWORD\"}}}" > /kaniko/.docker/config.json
+  - /kaniko/executor --context "${CI_PROJECT_DIR}" --dockerfile "${CI_PROJECT_DIR}/kicad4.Dockerfile" --destination "${CI_REGISTRY_IMAGE}/kicad4:${CI_COMMIT_REF_NAME}-${CI_COMMIT_SHORT_SHA}" --destination "${CI_REGISTRY_IMAGE}/kicad4:${CI_COMMIT_REF_NAME}-latest"

@@ -21,6 +21,11 @@ See the complete blogs entry at  www.surfncircuits.com
 ## Generating BOM/POC files for JLCPCB
 
 You'll need both KiCAD4 and KiCAD5. Use `kicad4.Dockerfile` to get yourself a working KiCAD4 installation.
+```sh
+xhost +
+docker run -it -e DISPLAY -v /tmp/.X11-unix:/tmp/.X11-unix -v $HOME/.Xauthority:/home/developer/.Xauthority --net=host --mount type=bind,source=`pwd`/git,target=/git registry.gitlab.com/juravenator/nixiepowersupply/kicad4:master-latest
+xhost -
+```
 
 The information below is in addition to the documentation found at
 https://support.jlcpcb.com/article/84-how-to-generate-the-bom-and-centroid-file-from-kicad
